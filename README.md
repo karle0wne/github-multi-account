@@ -23,11 +23,6 @@ Quick way to run the script directly from GitHub without downloading the reposit
 curl -fsSL https://raw.githubusercontent.com/karle0wne/github-multi-account/master/setup_github_account.sh | bash
 ```
 
-**Recommendations:**
-- Replace `master` with a specific branch or commit SHA for reproducibility
-- Review the script before running: `curl -fsSL <url> | less`
-- Syntax check without execution: `curl -fsSL <url> | bash -n`
-
 ### Automatic Dependency Installation
 
 The script automatically checks for required utilities and offers to install missing ones:
@@ -293,11 +288,3 @@ git clone git@github.com-username:org/repo.git
 ```
 
 **Important:** Cleanup removes only the resources created by the script (files under the managed alias and GPG keys tagged with its comment). If you manually repoint those paths to shared keys, the cleanup step will remove them as well.
-
-## FAQ
-- **No `gh`** — Install [GitHub CLI](https://cli.github.com/) (e.g., `brew install gh` or `apt install gh`). The script checks availability and exits with an error if the command is missing.
-- **PAT not saved** — If the script reports an invalid token, check scopes or generate a new one. After successful login, the token is stored in macOS Keychain (or system secret storage).
-- **Need a different alias** — You can use your own (`github.alt`, `gh-extra`, etc.), just use it consistently when cloning and in `ssh -T`.
-- **Can I install 3+ accounts?** — Yes! Just run setup as many times as needed. Each account gets its own directory (`~/.config/github-alice/`, `~/.config/github-bob/`, etc.).
-
-The script has been tested locally: it successfully restored the test account setup, uploaded keys, and passed GitHub connectivity tests. If edge cases arise, update the guide and/or script accordingly.
